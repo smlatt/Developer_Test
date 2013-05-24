@@ -31,15 +31,16 @@
 	
 	</script>
 	<style type="text/css">
-		body {font-family: verdana, arial, sans-serif;}
+		body {font-family: verdana, arial, sans-serif; width: 90%; }
 		.error{color: #F90909; padding-bottom: 20px; }
 		.title{color: #069B33; }
+		.result{border: 1px solid #069B33; padding: 10px; width: 80%; margin-top: 20px;word-wrap:break-word;}
 	</style>
 </head>
 <body>
 	<form method="POST">
 		<!-- Accept input -->
-		<span class="title">Enter positive integet range <br> </span>
+		<span class="title">Enter positive integer range :<br> <br> </span>
 		From : <input type="text" name="from" id="from" value="<?php echo $_REQUEST['from'];?>" maxlength="10" onkeypress = "return numbersonly(event);" >
 		To : <input type="text" name="to" id="from" value="<?php echo $_REQUEST['to'];?>" maxlength="10" onkeypress = "return numbersonly(event);" >
 		<input type="submit" value="Print" name="submit" id="submit">
@@ -48,26 +49,34 @@
 	<div>
 		
 		<?php	
+		 // check form submit
 		if($_REQUEST['submit']){
-			if( $_REQUEST['from']!='' && $_REQUEST['to']!='' ){  
-				if ( $_REQUEST['from'] > $_REQUEST['to'] ){
-					echo '<div class="error"><b>"From"</b> should not greater than <b>"To"</b> range.</div>'; 
-				}
+			// check range are not empty and from range must less than to range
+			if( $_REQUEST['from']!='' && $_REQUEST['to']!='' && $_REQUEST['from'] < $_REQUEST['to'] ){  
+				//display result div
+				echo '<div class="result">';
 				for( $i=$_REQUEST['from']; $i<=$_REQUEST['to']; $i++ ){				
-					if( ($i % 3) == 0  && ($i % 5) == 0 ){
+					if( ($i % 3) == 0  && ($i % 5) == 0 ){ // $i is both multiple of 3 and 5 
 						echo 'FizzBuzz'.'&nbsp;';
-					}elseif( ($i % 3) == 0 ){
+					}elseif( ($i % 3) == 0 ){ // $i is multiple of 3 
 						echo 'Fizz'.'&nbsp;';
-					}elseif( ($i % 5) == 0 ){
+					}elseif( ($i % 5) == 0 ){// $i is multiple of 5 
 						echo 'Buzz'.'&nbsp;';
 					}else{
-						echo $i.'&nbsp;';
+						echo $i.'&nbsp;'; // $i is not multiple of both 3 or 5
 					}
 				}
+				echo '</div>';
+				
 			}else{
+				// display error message for from range empty
 				if( $_REQUEST['from'] == '' ) echo '<div class="error">Please enter <b>"From"</b> range</div>'; 
+				// display error message for to range empty
 				if( $_REQUEST['to'] == '' ) echo '<div class="error">Please enter <b>"To"</b> range</div>'; 
+				// display error message for from range greater than to range
+				if ( $_REQUEST['from'] > $_REQUEST['to'] )	echo '<div class="error"><b>"From"</b> range should not greater than <b>"To"</b> range.</div>'; 				
 			}
+			
 		}
 		?>
 	</div>
