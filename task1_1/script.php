@@ -24,7 +24,7 @@
 	   	return true;
 		// numbers
 		else if ((("0123456789").indexOf(keychar) > -1)){
-            		    return true;
+        return true;
 		}
 		else return false;
 	}

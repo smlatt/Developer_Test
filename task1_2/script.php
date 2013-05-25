@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en" >
 <head>
-	<title>Task 1: Solution 1</title>
+	<title>Task 1: Solution 2</title>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />  <!-- page content encoded as utf-8 -->
 	<meta name="keywords" content="integer range,range checker" /> <!-- for SEO friendly -->
 	<meta name="description" content="Script will accepts a positive integer range and, print relavant data" /> <!-- for SEO friendly -->
@@ -24,7 +24,7 @@
 	   	return true;
 		// numbers
 		else if ((("0123456789").indexOf(keychar) > -1)){
-            		    return true;
+        return true;
 		}
 		else return false;
 	}
@@ -77,11 +77,11 @@
 				echo '</div>';
 				
 			}else{
-				// display error message for from range empty
+				// display error message for "from" range empty
 				if( $_REQUEST['from'] == '' ) echo '<div class="error">Please enter <b>"From"</b> range</div>'; 
-				// display error message for to range empty
+				// display error message for "to" range empty
 				if( $_REQUEST['to'] == '' ) echo '<div class="error">Please enter <b>"To"</b> range</div>'; 
-				// display error message for from range greater than to range
+				// display error message for "from" range greater than "to" range
 				if ( $_REQUEST['from'] > $_REQUEST['to'] )	echo '<div class="error"><b>"From"</b> range should not greater than <b>"To"</b> range.</div>'; 				
 			}
 			
